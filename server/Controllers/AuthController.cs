@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using server.Interfaces;
 using server.Models;
-using server.Repository;
 
 namespace server.Controllers
 {
@@ -14,12 +12,10 @@ namespace server.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserManager<User> userManager;
-        private readonly IAuthRepository authRepository;
 
-        public AuthController(UserManager<User> userManager, IAuthRepository authRepository)
+        public AuthController(UserManager<User> userManager)
         {
             this.userManager = userManager;
-            this.authRepository = authRepository;
         }
 
         [HttpGet("google")]
@@ -36,61 +32,82 @@ namespace server.Controllers
         [HttpGet("google-callback")]
         public async Task<IActionResult> GoogleCallback()   // user is stored in database here
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            if (!result.Succeeded)
-                return Unauthorized();
-
-            var email = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.Email)!.Value;
-            var name = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.Name)!.Value;
-            var googleUserId = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)!.Value;
-            var username = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.GivenName)!.Value.ToLower();
-
-            var user = await userManager.FindByEmailAsync(email);
-            if (user == null)
-            // {
-            //     if (user.UserName == username)
-            //     {
-
-            //     }
-            //     ;
-            // }
-            // else
+            try
             {
-                user = new User
+                var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+                if (!result.Succeeded)
+                    return Unauthorized();
+
+                var email = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.Email)!.Value;
+
+                var user = await userManager.FindByEmailAsync(email);
+
+                if (user == null)
                 {
-                    Email = email,
-                    Name = name,
-                    GoogleUserId = googleUserId,
-                    UserName = username
-                };
-                var createdUser = await userManager.CreateAsync(user);
-                if (!createdUser.Succeeded)
-                    return BadRequest(createdUser.Errors);
+                    var name = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.Name)!.Value;
+                    var googleUserId = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.NameIdentifier)!.Value;
+                    var baseUsername = result.Principal.FindFirst(c => c.Type == System.Security.Claims.ClaimTypes.GivenName)!.Value.ToLower();
+
+                    var username = baseUsername;
+                    int suffix = 0;
+
+                    while (await userManager.FindByNameAsync(username) != null)
+                    {
+                        suffix = new Random().Next(1000, 9999);
+                        username = $"{baseUsername}-{suffix}";
+                    }
+
+                    user = new User
+                    {
+                        Email = email,
+                        Name = name,
+                        GoogleUserId = googleUserId,
+                        UserName = username
+                    };
+
+                    var createdUser = await userManager.CreateAsync(user);
+
+                    if (!createdUser.Succeeded)
+                        return BadRequest(createdUser.Errors);
+                }
+
+                return Ok(new
+                {
+                    Success = true,
+                    Message = "Log in successful.",
+                });
             }
-
-            // var claims = result.Principal!.Identities.FirstOrDefault()!.Claims.Select(claim => new
-            // {
-            //     claim.Type,
-            //     claim.Value
-            // });
-
-            return Ok(new
+            catch (Exception)
             {
-                success = true,
-                message = "Log in successful.",
-            });
+                return StatusCode(500, new
+                {
+                    Success = false,
+                    Message = "Internal Server Error."
+                });
+            }
         }
 
         [HttpGet("logout")]
         public async Task<IActionResult> Logout()
         {
-            await authRepository.LogoutAsync();
-
-            return Ok(new
+            try
             {
-                success = true,
-                message = "Log out successful,"
-            });
+                await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+                return Ok(new
+                {
+                    Success = true,
+                    Message = "Log out successful."
+                });
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, new
+                {
+                    Success = false,
+                    Message = "Internal Server Error."
+                });
+            }
         }
     }
 }

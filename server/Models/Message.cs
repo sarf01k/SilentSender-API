@@ -4,16 +4,16 @@ namespace server.Models
 {
     public class Message
     {
-        public string? Id { get; set; }
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required(ErrorMessage = "Message content is required")]
         public string? Content { get; set; }
 
-        [Required(ErrorMessage = "Invalid sender ID")]
-        public string? SenderId { get; set; }
-
         [Required(ErrorMessage = "Invalid recipient ID")]
         public string? RecipientId { get; set; }
+
+        public string? Sender { get; set; }
 
         public Tag? Tag { get; set; }
 
