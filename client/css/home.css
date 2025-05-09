@@ -1,0 +1,54 @@
+.container {
+    max-width: 640px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+}
+
+header {
+    top: 0;
+    position: sticky;
+    border-bottom: 1px solid rgb(38 38 38);
+}
+
+.header-wrapper {
+    padding: 0.5rem 0;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-btn {
+    transition-duration: 0.2s;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background-color: #88133733;
+    color: rgb(255 255 255);
+}
+
+.logout-btn:hover {
+    color: rgb(244 63 94);
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 768px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1280px;
+    }
+}

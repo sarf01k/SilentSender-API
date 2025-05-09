@@ -6,12 +6,20 @@
     border: 0;
     box-sizing: border-box;
     text-decoration: none;
-    list-style: none;
-    user-select: none;
+    user-select: text;
 }
 
 html {
     background-color: rgb(23, 23, 23);
     font-family: "Inter", system-ui, sans-serif;
     font-size: 15px;
+    color: #ffffff;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.margin-auto {
+    margin: 0 auto;
 }

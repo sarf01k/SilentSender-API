@@ -1,5 +1,128 @@
+.container {
+    max-width: 960px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.text-secondary {
+    color: rgb(163 163 163);
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.login-btn {
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    background-color: rgb(37 99 235);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    color: rgb(255 255 255);
+    text-transform: none;
+}
+
+.hero-image {
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.description {
+    max-width: 35rem;
+    font-weight: 500;
+}
+
+section,
+.disclaimer {
+    margin-top: 3.5rem;
+}
+
+.section-title {
+    font-size: 1.875rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2.5rem;
+}
+
+.feature {
+    grid-column: span 1 / span 1;
+}
+
+.feature-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .features-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .section-title {
+        font-size: 1.875rem;
+        line-height: 1;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .features-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.why-list {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+
+.why-item {
+    margin-bottom: 0.5rem;
+}
+
+.asterisk {
+    color: #e63946;
+}
+
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid rgb(38 38 38);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.footer-wrapper {
+    grid-column: span 1 / span 1;
+}
+
+.footer-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }

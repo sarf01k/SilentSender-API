@@ -5,87 +5,122 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../css/root.css" />
         <link rel="stylesheet" href="../css/index.css" />
+        <link rel="icon" type="image/svg+xml" href="../images/logo.svg" />
         <title>SilentSender</title>
     </head>
     <body>
-        <header class="container">
+        <header class="container margin-auto">
             <a href="./index.html">
                 <img src="../images/logo.svg" />
             </a>
             <div>
                 <nav>
-                    <a href="">Login with your Google account</a>
+                    <div>
+                        <button class="login-btn text-center">
+                            Login with your Google account
+                        </button>
+                    </div>
                 </nav>
             </div>
         </header>
-        <div class="container">
-            <div>Say what’s on your mind — anonymously.</div>
-            <img src="../images/SilentSender.svg" />
-            <div>
+
+        <main class="container margin-auto">
+            <div class="text-secondary text-center">
+                Say what’s on your mind — anonymously.
+            </div>
+
+            <div class="hero-image">
+                <img src="../images/SilentSender.svg" />
+            </div>
+
+            <div class="description text-center margin-auto">
                 Whether it’s praise, criticism, feedback or just something
                 you’ve been meaning to say — SilentSender gives you a safe,
                 anonymous way to send it.
             </div>
-            <section>
-                <h2>What can you do on SilentSender?</h2>
-                <div>
-                    <h3>Send Messages</h3>
-                    <p>
-                        Encourage someone quietly. Call out bad behavior without
-                        fear. Say thank you, sorry, or what you really feel —
-                        all without your name attached.
-                    </p>
-                </div>
-                <div>
-                    <h3>Receive Feedback</h3>
-                    <p>
-                        Want to know how others see you? Share your link and
-                        receive honest messages. The good, the bad, and the
-                        brutally honest — all in one place.
-                    </p>
-                </div>
-                <div>
-                    <h3>React, Reflect, Reply</h3>
-                    <p>
-                        You can choose to respond publicly or just sit with the
-                        message privately. Either way, it’s yours to deal with,
-                        your way.
-                    </p>
-                </div>
-            </section>
-            <section>
-                <h2>Why SilentSender?</h2>
-                <div>
-                    <ul>
-                        <li>
-                            It’s anonymous
-                            <span> — no accounts needed to send.</span>
-                        </li>
-                        <li>
-                            It’s for everyone
-                            <span>
-                                — students, colleagues, teams, friends.</span
-                            >
-                        </li>
-                        <li>
-                            It’s open
-                            <span> — no filters, no sugarcoating.</span>
-                        </li>
-                    </ul>
+
+            <section class="features-section">
+                <h2 class="section-title text-center">
+                    What can you do on SilentSender?
+                </h2>
+                <div class="features-list">
+                    <div class="feature">
+                        <h3 class="feature-title">Send Messages</h3>
+                        <p class="feature-description">
+                            Encourage someone quietly. Call out bad behavior
+                            without fear. Say thank you, sorry, or what you
+                            really feel
+                            <span class="text-secondary">
+                                &nbsp;— all without your name attached.
+                            </span>
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <h3 class="feature-title">Receive Feedback</h3>
+                        <p class="feature-description">
+                            Want to know how others see you? Share your link and
+                            receive honest messages. The good, the bad, and the
+                            brutally honest
+                            <span class="text-secondary">
+                                &nbsp;— all in one place.
+                            </span>
+                        </p>
+                    </div>
+                    <div class="feature">
+                        <h3 class="feature-title">React, Reflect, Reply</h3>
+                        <p class="feature-description">
+                            You can choose to respond publicly or just sit with
+                            the message privately. Either way, it’s yours to
+                            deal with, your way.
+                        </p>
+                    </div>
                 </div>
             </section>
-            <div>
-                <p>Not every message will be nice. That’s okay.</p>
-                <p>
+
+            <section class="why-section">
+                <h2 class="section-title text-center">Why SilentSender?</h2>
+                <ul class="why-list">
+                    <li class="why-item">
+                        It’s anonymous
+                        <span class="text-secondary"
+                            >— no accounts needed to send.</span
+                        >
+                    </li>
+                    <li class="why-item">
+                        It’s for everyone
+                        <span class="text-secondary"
+                            >— students, colleagues, teams, friends.</span
+                        >
+                    </li>
+                    <li class="why-item">
+                        It’s open
+                        <span class="text-secondary"
+                            >— no filters, no sugarcoating.</span
+                        >
+                    </li>
+                </ul>
+            </section>
+
+            <div class="disclaimer text-center">
+                <p class="disclaimer-note">
+                    <span class="asterisk">*</span> Not every message will be
+                    nice. That’s okay.
+                </p>
+                <p class="disclaimer-description">
                     SilentSender is about honesty. Sometimes that’s
                     uncomfortable. Sometimes it’s beautiful. But it’s always
                     yours.
                 </p>
             </div>
-        </div>
-        <footer class="container">
-            <div>
-                <div>&copy; SilentSender</div>
+        </main>
+
+        <footer class="site-footer container">
+            <div class="footer-content">
+                <div class="footer-wrapper">
+                    <div class="footer-text text-secondary">
+                        &copy; SilentSender
+                    </div>
+                </div>
             </div>
         </footer>
     </body>
