@@ -35,6 +35,12 @@ header {
     cursor: pointer;
 }
 
+@media screen and (max-width: 1024px) {
+    .logout-btn {
+        color: rgb(244 63 94);
+    }
+}
+
 @media screen and (min-width: 768px) {
     .container {
         max-width: 768px;
