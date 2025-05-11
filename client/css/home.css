@@ -35,6 +35,45 @@ header {
     cursor: pointer;
 }
 
+footer {
+    background-color: rgb(38 38 38);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    display: grid;
+    align-items: end;
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+}
+
+.footer-name {
+    font-weight: 700;
+}
+
+.footer-content {
+    display: inline-flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0.5rem;
+}
+
+.footer-link:hover {
+    background-color: rgb(64 64 64);
+}
+
+.footer-label {
+    color: rgb(255 255 255);
+    font-weight: 500;
+}
+
 @media screen and (max-width: 1024px) {
     .logout-btn {
         color: rgb(244 63 94);
@@ -56,5 +95,11 @@ header {
 @media screen and (min-width: 1280px) {
     .container {
         max-width: 1280px;
+    }
+}
+
+@media screen and (min-width: 1536px) {
+    .container {
+        max-width: 1536px;
     }
 }
