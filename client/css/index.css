@@ -4,10 +4,6 @@
     padding-right: 1rem;
 }
 
-.text-secondary {
-    color: rgb(163 163 163);
-}
-
 header {
     display: flex;
     justify-content: space-between;

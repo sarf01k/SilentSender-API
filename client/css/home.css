@@ -35,6 +35,21 @@ header {
     cursor: pointer;
 }
 
+.sender {
+    font-weight: 500;
+}
+
+.message-preview {
+    font-weight: 500;
+}
+
+.read-btn {
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgb(163 163 163);
+}
+
 footer {
     background-color: rgb(38 38 38);
     padding-top: 1.5rem;

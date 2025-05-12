@@ -16,6 +16,10 @@ html {
     color: #ffffff;
 }
 
+.text-secondary {
+    color: rgb(163 163 163);
+}
+
 .text-center {
     text-align: center;
 }
