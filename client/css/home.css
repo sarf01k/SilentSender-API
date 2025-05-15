@@ -1,21 +1,5 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-    min-width: 320px;
-    margin-top: 3.5rem;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
+a {
+    text-decoration: none;
 }
 
 .container {
@@ -23,37 +7,6 @@ main {
     padding-left: 1rem;
     padding-right: 1rem;
     width: 100%;
-}
-
-header {
-    top: 0;
-    position: sticky;
-    border-bottom: 1px solid rgb(38 38 38);
-    background-color: rgb(23, 23, 23);
-}
-
-.header-wrapper {
-    padding: 0.5rem 0;
-}
-
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logout-btn {
-    transition-duration: 0.2s;
-    font-weight: 500;
-    border-radius: 0.5rem;
-    padding: 0.25rem 0.5rem;
-    background-color: #88133733;
-    color: rgb(255 255 255);
-}
-
-.logout-btn:hover {
-    color: rgb(244 63 94);
-    cursor: pointer;
 }
 
 .messages-list {
@@ -121,47 +74,6 @@ header {
     cursor: not-allowed;
     pointer-events: none;
     opacity: 0.6;
-}
-
-footer {
-    background-color: rgb(38 38 38);
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-top: 3.5rem;
-    margin-bottom: 0;
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 0.75rem;
-    display: grid;
-    align-items: end;
-    grid-template-columns: repeat(2, minmax(0px, 1fr));
-}
-
-.footer-name {
-    font-weight: 700;
-}
-
-.footer-content {
-    display: inline-flex;
-    justify-content: end;
-    align-items: end;
-}
-
-.footer-link {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-radius: 0.5rem;
-    padding: 0.25rem 0.5rem;
-}
-
-.footer-link:hover {
-    background-color: rgb(64 64 64);
-}
-
-.footer-label {
-    color: rgb(255 255 255);
-    font-weight: 500;
 }
 
 @media screen and (max-width: 1024px) {
