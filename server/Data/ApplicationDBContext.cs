@@ -12,5 +12,14 @@ namespace server.Data
         }
 
         public DbSet<Message> Messages { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Message>()
+                .Property(m => m.Tag)
+                .HasConversion<string>();
+        }
     }
 }

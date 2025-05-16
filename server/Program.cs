@@ -1,4 +1,5 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using dotenv.net;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
@@ -41,6 +42,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddControllers().AddJsonOptions(opts =>
 {
+    opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     opts.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 

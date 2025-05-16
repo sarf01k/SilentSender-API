@@ -21,6 +21,11 @@ namespace server.Controllers
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var result = await messageRepository.SubmitMessage(username, submitMessageDTO);
 
                 if (result.Success)
@@ -28,7 +33,7 @@ namespace server.Controllers
                     return Ok(result);
                 }
 
-                return BadRequest();
+                return BadRequest(result);
             }
             catch (Exception)
             {
@@ -40,11 +45,17 @@ namespace server.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("messages")]
         public async Task<IActionResult> DeleteMessage([FromQuery] Guid id)
         {
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var result = await messageRepository.DeleteMessage(id);
 
                 if (result.Success)
@@ -52,7 +63,7 @@ namespace server.Controllers
                     return Ok(result);
                 }
 
-                return BadRequest();
+                return BadRequest(result);
             }
             catch (Exception)
             {

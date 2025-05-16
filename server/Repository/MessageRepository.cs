@@ -24,6 +24,17 @@ namespace server.Repository
             try
             {
                 var recipient = await userManager.FindByNameAsync(username);
+                bool isAnonymous;
+
+                if (string.IsNullOrWhiteSpace(submitMessageDTO.Sender))
+                {
+                    submitMessageDTO.Sender = "anonymous";
+                    isAnonymous = true;
+                }
+                else
+                {
+                    isAnonymous = false;
+                }
 
                 var message = new Message
                 {
@@ -31,8 +42,7 @@ namespace server.Repository
                     RecipientId = recipient!.Id,
                     Sender = submitMessageDTO.Sender,
                     Tag = (Models.Tag?)submitMessageDTO.Tag,
-                    IsAnonymous = submitMessageDTO.IsAnonymous,
-                    Flagged = submitMessageDTO.Flagged
+                    IsAnonymous = isAnonymous,
                 };
 
                 await context.Messages.AddAsync(message);
